@@ -10,11 +10,12 @@ import com.majestic.condenserwand.CondenserWand;
 import com.majestic.condenserwand.ConfigMgr;
 import com.majestic.condenserwand.PlayerTracker;
 
+// Executes plugin commands
 public class CondenserCommand implements CommandExecutor {
 	private static final String[] help = {
 			ChatColor.BLUE + "---CondenserWand---",
 			ChatColor.AQUA + "/condenserwand help" + ChatColor.DARK_GRAY + ": " + ChatColor.GOLD + "shows this message.",
-			ChatColor.AQUA + "/condenserwand sort [on|off]" + ChatColor.DARK_GRAY + ": "  + ChatColor.GOLD + "toggles/sets container sorting.",
+			ChatColor.AQUA + "/condenserwand sort [on|off/true|false]" + ChatColor.DARK_GRAY + ": "  + ChatColor.GOLD + "toggles/sets container sorting.",
 			ChatColor.AQUA + "/condenserwand give [(optional) player]" + ChatColor.DARK_GRAY + ": " + ChatColor.GOLD + "gives a player a wand.",
 			ChatColor.AQUA + "/condenserwand info" + ChatColor.DARK_GRAY + ": " + ChatColor.GOLD + "shows plugin information.",
 			ChatColor.AQUA + "/condenserwand version" + ChatColor.DARK_GRAY + ": " + ChatColor.GOLD + "shows version information.",
@@ -71,6 +72,12 @@ public class CondenserCommand implements CommandExecutor {
 					state = true;
 					break;
 				case "off":
+					state = false;
+					break;
+				case "true":
+					state = true;
+					break;
+				case "false":
 					state = false;
 					break;
 				case "default":
