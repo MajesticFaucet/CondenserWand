@@ -1,7 +1,8 @@
 name: CondenserWand
 main: com.majestic.condenserwand.CondenserWand
-version: 1.0
+version: 1.0.1
 author: MajesticFaucet
+softdepend: [WorldGuard]
 commands:
   condenserwand:
     description: main plugin command
