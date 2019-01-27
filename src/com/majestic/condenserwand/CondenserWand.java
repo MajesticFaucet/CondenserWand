@@ -13,12 +13,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.majestic.condenserwand.listeners.CondenserCommand;
 import com.majestic.condenserwand.listeners.ContainerClick;
+import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 
 public final class CondenserWand extends JavaPlugin {
 	private static CondenserWand pl;
@@ -33,7 +35,7 @@ public final class CondenserWand extends JavaPlugin {
 		pm = s.getPluginManager();
 		cs = this.getServer().getConsoleSender();
 		reload();
-		cs.sendMessage("Custom plugins by MajesticFacuet.");
+		cs.sendMessage("Loaded CondenserWand by MajesticFacuet.");
 		pm.registerEvents(new ContainerClick(), this);
 		this.getCommand("condenserwand").setExecutor(new CondenserCommand());
 	}
@@ -43,17 +45,30 @@ public final class CondenserWand extends JavaPlugin {
 		
 	}
 	
+	// returns plugin instance
 	public static CondenserWand getInstance() {
 		return pl;
 	}
 	
+	// returns the instance of WorldGuard if running, otherwise returns null
+	public static WorldGuardPlugin getInstaceWorldGuard() {
+		Plugin worldguard = pm.getPlugin("WorldGuard");
+		if(worldguard != null && worldguard instanceof WorldGuardPlugin) {
+			return (WorldGuardPlugin) worldguard;
+		} else {
+			return null;
+		}
+	}
+	
+	// called on plugin load or with /condenserwand reload
 	public static void reload() {
 		ConfigMgr.reloadConfig();
-		if(!ConfigMgr.getVersion().equals("1.0.0")) {
+		if(!ConfigMgr.getVersion().equals(pl.getDescription().getVersion())) {
 			cs.sendMessage("WARNING: Config version doesn't match the current plugin version! Backup your plugin config and delete the one in the plugin directory, then copy all desired values over. Ignoring this can cause potential crashes or glitches in the future.");
 		}
 	}
 	
+	// support for translating String lists of color codes
 	public static List<String> translateColorCodesList(List<String> strings) {
 		List<String> fin = new ArrayList<String>();
 		for(String string : strings) {
@@ -62,6 +77,7 @@ public final class CondenserWand extends JavaPlugin {
 		return fin;
 	}
 	
+	// called when a player receives a wand
 	public static void giveWand(Player p, boolean cooleffects) {
 		if(cooleffects) {
 			p.getWorld().strikeLightningEffect(p.getLocation());
@@ -69,13 +85,13 @@ public final class CondenserWand extends JavaPlugin {
 				@Override
 				public void run() {
 					try {
-						p.playSound(p.getLocation().add(5, 0, 0), Sound.ANVIL_LAND, 1F, 1F);
+						p.playSound(p.getLocation().add(5D, 0D, 0D), Sound.ANVIL_LAND, 1F, 1F);
 						Thread.sleep(500L);
-						p.playSound(p.getLocation().add(0, 0, 5), Sound.ANVIL_LAND, 1F, 1F);
+						p.playSound(p.getLocation().add(0D, 0D, 5D), Sound.ANVIL_LAND, 1F, 1F);
 						Thread.sleep(500L);
-						p.playSound(p.getLocation().add(-5, 0, 0), Sound.ANVIL_LAND, 1F, 1F);
+						p.playSound(p.getLocation().add(-5D, 0D, 0D), Sound.ANVIL_LAND, 1F, 1F);
 						Thread.sleep(500L);
-						p.playSound(p.getLocation().add(0, 0, -5), Sound.ANVIL_LAND, 1F, 1F);
+						p.playSound(p.getLocation().add(0D, 0D, -5D), Sound.ANVIL_LAND, 1F, 1F);
 					} catch(InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -112,6 +128,8 @@ public final class CondenserWand extends JavaPlugin {
 		return false;
 	}
 	
+	
+	// returns the corresponding player object for an ingame player from string lookup
 	public static Player getPlayer(String ps) {
 		for(Player p : s.getOnlinePlayers()) {
 			if(p.getName().equals(ps)) {

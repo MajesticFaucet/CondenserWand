@@ -7,11 +7,15 @@
     <id>spigot-repo</id>
     <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
     </repository>
+    <repository>
+      <id>sk89q-repo</id>
+      <url>http://maven.sk89q.com/repo/</url>
+    </repository>
   </repositories>
   
   <groupId>com.majestic</groupId>
   <artifactId>condenserwand</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <packaging>jar</packaging>
 
   <name>CondenserWand</name>
@@ -28,7 +32,7 @@
   </properties>
   
   <build>
-    <finalName>${project.name}-${version}</finalName>
+    <finalName>${project.name}-${project.version}</finalName>
     <defaultGoal>clean install</defaultGoal>
     <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>test</testSourceDirectory>
@@ -64,6 +68,11 @@
       <artifactId>spigot-api</artifactId>
       <version>1.8.8-R0.1-SNAPSHOT</version>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.sk89q.worldguard</groupId>
+      <artifactId>worldguard-legacy</artifactId>
+      <version>6.1.2</version>
     </dependency>
   </dependencies>
 </project>
