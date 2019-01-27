@@ -1,0 +1,8 @@
+name: CondenserWand
+main: com.majestic.condenserwand.CondenserWand
+version: 1.0
+author: MajesticFaucet
+commands:
+  condenserwand:
+    description: main plugin command
+    usage: /condenserwand [info|version|help]

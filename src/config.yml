@@ -1,0 +1,63 @@
+# CondenserWand by MajesticFaucet, main configuration file.
+# If permissions are enabled, the default permission is 'condenserwand.use'.
+# All times are in miliseconds and chatcolors use '&'.
+
+# DO NOT CHANGE VERSION, RESERVED FOR PLUGIN USE
+version: 1.0.0
+
+
+# -- Wand Config --
+
+# Item that functions as the wand
+item-name: STICK
+
+# Sets whether or not the wand will also sort and consolidate the contents of container used on,
+# users still need the 'condenserwand.use.sort' permission.
+# If sort is enabled and a player has the sort permissions, by default their container will be sorted.
+# This can be changed with /condenserwand sort [on|off].
+sort: true
+
+# if enabled, the item must have a specific name and meta, otherwise the default item will function as a condenser wand.
+# unless you want everyone having access to condenser wands, you should enable either permission check or meta check.
+enable-item-meta-check: false
+item-meta:
+  display-name: "&b&lCondenser-Wand"
+  lore:
+    - "&7Right-Click a chest with"
+    - "&7with this wand to"
+    - "&7condense its contents."
+  # makes the item appear to have enchantment shine
+  shiny: true
+
+# Limits the amount of times a wand can be used. can help with lag if someone is spamming it.
+wand-delay: true
+# Delay between using wand.
+delay: 500
+
+# Enables some cool effects when a player receives a wand
+cooleffects: true
+
+# -- Messages --
+
+# Message to send player when permission check fails.
+deny-message: "&4You do not have permission to use condenser wands!"
+
+# Message to send when player doesn't click on the correct type of container.
+send-wrong-container-message: true
+
+# Message to send when they open the wrong container.
+wrong-container-message: "&8Silly you, that's not a chest!"
+
+# Message to send after successfully condensing a container. Use '%NUM%' for number of items sorted.
+condense-msg: "&8Condensed %NUM% items."
+
+# Message to send when nothing is condensable.
+nothing-condensable: "&8Nothing to condense here!" 
+
+# Message to send when no free space is left in container.
+nofreespace: "&8No free space available in container!"
+
+# Messaage to send to player when they are given a wand.
+receieve-msg: "&6The gods have bestowed upon you a great wand of power! Remember with great power comes great sortability!"
+
+# -- End of Configuration --
