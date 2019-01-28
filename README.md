@@ -1,5 +1,5 @@
 # CondenserWand
-CondenserWand is a leightweight sort and craft wand designed to run on your Spigot server.
+A leightweight sort and craft wand designed to run on your Spigot server.
 ## Features
 * WorldGuard integration
 * Special item with configurable display-name and meta.
