@@ -31,7 +31,7 @@ CondenserWand should work on all versions of Spigot **_except for 1.13_**, altho
 ## Downloading
 You can either download or build from source.
 
-If you don't want to build, just head over to the releases page for the pre-built jar files.
+If you don't want to build, just head over to the [releases](https://github.com/MajesticFaucet/CondenserWand/releases) page for the pre-built jar files.
 
 ## Building
 To build the plugin, you first need Maven and Java 8 JDK.
