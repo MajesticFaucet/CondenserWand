@@ -4,16 +4,17 @@ A leightweight sort and craft wand designed to run on your Spigot server.
 * WorldGuard integration
 * Special item with configurable display-name and meta.
 * Plugin compares player items to make sure they match displayname and meta defined in configuration file.
-* Ability to use wand on chests, trapped chests, or even enderchests.
+* Ability to use wand on chests, trapped chests, or even enderchests and minecart chests.
 * Shiny item (optional enchanted effect).
 * Cool effects when giving a player a wand.
 * Toggable auto-sort feature.
 * Permission based auto sort and wand usage.
 * Highly configurable messages and features (almost all features are optional and can be turned on or off at any time in the configuration file).
 ## Upcoming Features
-* Ability to work with additional containers such as minecart chests and shulker boxes.
+* Ability to work with additional containers such shulker boxes.
 * 1.13 support coming soon!
 * Integrations with more anti-grief plugins.
+* Different sort modes (alphabetical, numeric, type).
 ## Supported Versions
 CondenserWand should work on all versions of Spigot **_except for 1.13_**, although support is coming soon in the near future.
 ## Permissions
