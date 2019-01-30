@@ -1,4 +1,4 @@
-package com.majestic.condenserwand;
+package com.majestic.condenserwand.util;
 
 import java.util.ArrayList;
 import java.util.HashSet;
