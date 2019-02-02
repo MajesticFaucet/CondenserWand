@@ -142,7 +142,7 @@ public class CondenserCommand implements CommandExecutor {
 	private static String[] printVersion() {
 		String[] message = {
 				"CondenserWand by MajesticFaucet.",
-				"Running on version: " + instance.getConfig().getString("version")
+				"Running on version: " + instance.getDescription().getVersion()
 		};
 		
 		return message;
