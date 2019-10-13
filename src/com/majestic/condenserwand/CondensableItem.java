@@ -8,23 +8,34 @@ public class CondensableItem {
 	private ItemStack block;
 	private int ratio;
 	
+	/**
+	 * @param base - base item.
+	 * @param block - blocked form of the item.
+	 * @param ratio - ratio of base to blocked form.
+	 */
 	public CondensableItem(ItemStack base, ItemStack block, int ratio) {
-		// base item
 		this.base = base;
-		// blocked form of item
 		this.block = block;
-		// ratio of base block to block form.
 		this.ratio = ratio;
 	}
-
+	
+	/**
+	 * @return the base item.
+	 */
 	public ItemStack getBase() {
 		return base;
 	}
-
+	
+	/**
+	 * @return the blocked form of the item.
+	 */
 	public ItemStack getBlock() {
 		return block;
 	}
-
+	
+	/**
+	 * @return the ratio of the base to blocked form.
+	 */
 	public int getRatio() {
 		return ratio;
 	}

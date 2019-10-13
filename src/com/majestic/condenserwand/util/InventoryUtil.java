@@ -7,7 +7,9 @@ import java.util.Set;
 
 import org.bukkit.inventory.ItemStack;
 
-public abstract class InventoryManipulator {
+public final class InventoryUtil {
+	
+	private InventoryUtil() {}
 	
 	// consolidates itemstacks
 	public static List<ItemStack> consolidate(ItemStack[] iss) {

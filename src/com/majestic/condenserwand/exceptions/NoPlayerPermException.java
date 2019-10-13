@@ -1,4 +1,4 @@
-package com.majestic.condenserwand.util.exceptions;
+package com.majestic.condenserwand.exceptions;
 
 import org.bukkit.entity.Player;
 

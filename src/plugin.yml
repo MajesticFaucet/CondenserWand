@@ -1,6 +1,6 @@
 name: CondenserWand
 main: com.majestic.condenserwand.CondenserWand
-version: 1.0.2
+version: 1.0.3
 author: MajesticFaucet
 softdepend: [WorldGuard]
 commands:
