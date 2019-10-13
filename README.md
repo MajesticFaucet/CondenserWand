@@ -41,7 +41,7 @@ After installed, clone the repository.
 ```
 git clone https://github.com/MajesticFaucet/CondenserWand.git
 ```
-Checkout the branch you want. Unless you want bleeding edge, don't checkout master.
+Checkout the branch you want.
 ```
 git checkout branch
 ```
