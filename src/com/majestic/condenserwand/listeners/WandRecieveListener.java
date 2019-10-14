@@ -1,5 +1,6 @@
 package com.majestic.condenserwand.listeners;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
@@ -10,6 +11,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 
 import com.majestic.condenserwand.CondenserWand;
 import com.majestic.condenserwand.events.WandReceiveEvent;
@@ -46,6 +48,7 @@ public final class WandRecieveListener implements Listener {
 	
 	
 	final class AnvilSounds extends BukkitRunnable {
+		private static final double DISTANCE = 3D;
 		private final Player player;
 		private int step;
 		
@@ -58,16 +61,16 @@ public final class WandRecieveListener implements Listener {
 		public void run() {
 			switch(step) {
 			case 0:
-				atLocation(5D, 0D);
+				atLocation(Math.toRadians(-45D));
 				break;
 			case 1:
-				atLocation(0D, 5D);
+				atLocation(Math.toRadians(-135D));
 				break;
 			case 2:
-				atLocation(-5D, 0D);
+				atLocation(Math.toRadians(45D));
 				break;
 			case 3:
-				atLocation(0D, -5D);
+				atLocation(Math.toRadians(135D));
 				WandRecieveListener.this.giveWand(player);
 				this.cancel();
 				return;
@@ -75,8 +78,12 @@ public final class WandRecieveListener implements Listener {
 			step++;
 		}
 		
-		private void atLocation(final double X, final double Z) {
-			player.playSound(player.getLocation().add(X, 0D, Z), Sound.ANVIL_LAND, 1F, 1F);
+		private void atLocation(double angle) {
+			final Location location = player.getLocation();
+			final Vector direction = location.getDirection();
+			angle+=Math.atan2(direction.getZ(), direction.getX());
+			location.add(Math.cos(angle)*DISTANCE, 0D, Math.sin(angle)*DISTANCE);
+			player.playSound(location, Sound.ANVIL_LAND, 1F, 1F);
 		}
 	}
 }
