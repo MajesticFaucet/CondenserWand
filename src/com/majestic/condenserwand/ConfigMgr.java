@@ -6,7 +6,7 @@ import com.majestic.condenserwand.util.PluginConfig;
 
 public final class ConfigMgr {
 	private final CondenserWand instance;
-	private String itemname, itemdisplayname, denymsg, wrongcontainermsg, condensemsg, nothingcondensable, nofreespace, recvmsg;
+	private String itemname, itemdisplayname, denymsg, regiondenymsg, wrongcontainermsg, condensemsg, nothingcondensable, nofreespace, recvmsg;
 	private List<String> lore;
 	private boolean sort, wanddelay, sendwrongcontainermsg, itemmetacheck, cooleffects, shiny;
 	private long delay;
@@ -24,6 +24,7 @@ public final class ConfigMgr {
 		recvmsg = c.getString_C("receieve-msg");
 		itemdisplayname = c.getString_C("item-meta.display-name");
 		denymsg = c.getString_C("deny-message");
+		regiondenymsg = c.getString_C("region-deny-message");
 		wrongcontainermsg = c.getString_C("wrong-container-message");
 		condensemsg = c.getString_C("condense-msg");
 		nothingcondensable = c.getString_C("nothing-condensable");
@@ -48,6 +49,10 @@ public final class ConfigMgr {
 	
 	public String getDenyMsg() {
 		return denymsg;
+	}
+	
+	public String getRegionDenyMsg() {
+		return regiondenymsg;
 	}
 	
 	public String getWrongContainerMsg() {

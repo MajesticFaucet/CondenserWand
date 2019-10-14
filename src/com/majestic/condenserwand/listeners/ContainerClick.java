@@ -118,8 +118,7 @@ public final class ContainerClick implements Listener {
 		
 		if(location != null) {
 			try {
-				// TODO: add custom message for anti-grief deny.
-				if(!instance.getWorldGuardInstance().canBuild(player, location)) throw new NoPlayerPermException();
+				if(!instance.getWorldGuardInstance().canBuild(player, location)) throw new NoPlayerPermException(configmgr.getRegionDenyMsg());
 			} catch(final NoClassDefFoundError exception) {
 				// just ignore and carry on if WorldGuard isn't loaded
 			}			

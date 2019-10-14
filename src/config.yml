@@ -39,6 +39,9 @@ cooleffects: true
 # Message to send player when permission check fails.
 deny-message: "&4You do not have permission to use condenser wands!"
 
+# Message to send player when they cannot use wand because of region restriction.
+region-deny-message: "&4Wand usage is not allowed here."
+
 # Message to send when player doesn't click on the correct type of container.
 send-wrong-container-message: true
 
