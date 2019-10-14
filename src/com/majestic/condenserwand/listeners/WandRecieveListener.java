@@ -32,13 +32,13 @@ public final class WandRecieveListener implements Listener {
 				@Override
 				public void run() {
 					try {
-						player.playSound(location.add(5D, 0D, 0D), Sound.ANVIL_LAND, 1F, 1F);
+						player.playSound(location.clone().add(5D, 0D, 0D), Sound.ANVIL_LAND, 1F, 1F);
 						Thread.sleep(500L);
-						player.playSound(location.add(0D, 0D, 5D), Sound.ANVIL_LAND, 1F, 1F);
+						player.playSound(location.clone().add(0D, 0D, 5D), Sound.ANVIL_LAND, 1F, 1F);
 						Thread.sleep(500L);
-						player.playSound(location.add(-5D, 0D, 0D), Sound.ANVIL_LAND, 1F, 1F);
+						player.playSound(location.clone().add(-5D, 0D, 0D), Sound.ANVIL_LAND, 1F, 1F);
 						Thread.sleep(500L);
-						player.playSound(location.add(0D, 0D, -5D), Sound.ANVIL_LAND, 1F, 1F);
+						player.playSound(location.clone().add(0D, 0D, -5D), Sound.ANVIL_LAND, 1F, 1F);
 					} catch(final InterruptedException e) {
 						e.printStackTrace();
 					}
