@@ -7,10 +7,12 @@ import java.util.Set;
 
 import org.bukkit.inventory.ItemStack;
 
-public abstract class InventoryManipulator {
+public final class InventoryUtil {
+	
+	private InventoryUtil() {}
 	
 	// consolidates itemstacks
-	public static List<ItemStack> consolidate(ItemStack[] iss) {
+	public static List<ItemStack> consolidate(final ItemStack[] iss) {
 		List<ItemStack> fin = new ArrayList<ItemStack>();
 		for(ItemStack is : iss) {
 			if(is != null) {
@@ -21,7 +23,7 @@ public abstract class InventoryManipulator {
 	}
 	
 	// sorts all items in stacked form.
-	public static ItemStack[] sortAll(ItemStack[] iss) {
+	public static ItemStack[] sortAll(final ItemStack[] iss) {
 		ItemStack[] fin = new ItemStack[iss.length];
 		int relpos = 0;
 		for(ItemStack m : getItemSets(iss)) {
@@ -35,10 +37,10 @@ public abstract class InventoryManipulator {
 	
 	
 	// returns itemstacks only if similar to input in stacked form.
-	public static ItemStack[] getStacked(ItemStack[] iss, ItemStack m) {
+	public static ItemStack[] getStacked(final ItemStack[] iss, final ItemStack m) {
 		int occupacy = getItemOccupacy(iss, m);
 		int maxstacksize = m.getMaxStackSize();
-		ItemStack[] fin = new ItemStack[(int) Math.ceil((float)occupacy/(float)maxstacksize)];
+		final ItemStack[] fin = new ItemStack[(int) Math.ceil((float)occupacy/(float)maxstacksize)];
 		int left=occupacy;
 		for(int a=0; a<fin.length; a++) {
 			if(left>maxstacksize) {
@@ -56,9 +58,9 @@ public abstract class InventoryManipulator {
 	}
 	
 	// will only return one itemstack of each type each with an amount of 1 (useful for non-amount specific comparison).
-	public static Set<ItemStack> getItemSets(ItemStack[] iss) {
-		Set<ItemStack> items = new HashSet<ItemStack>();
-		for(ItemStack is : iss) {
+	public static Set<ItemStack> getItemSets(final ItemStack[] iss) {
+		final Set<ItemStack> items = new HashSet<ItemStack>();
+		for(final ItemStack is : iss) {
 			if(is != null) {
 				ItemStack nis = new ItemStack(is);
 				nis.setAmount(1);
@@ -71,8 +73,8 @@ public abstract class InventoryManipulator {
 	}
 	
 	// returns true if itemset hashset contains similar item.
-	public static boolean setContainsItem(Set<ItemStack> set, ItemStack m) {
-		for(ItemStack is : set) {
+	public static boolean setContainsItem(final Set<ItemStack> set, final ItemStack m) {
+		for(final ItemStack is : set) {
 			if(is.isSimilar(m)) {
 				return true;
 			}
@@ -81,8 +83,8 @@ public abstract class InventoryManipulator {
 	}
 	
 	// returns true if there are empty slots.
-	public static boolean hasEmptySlots(ItemStack[] iss) {
-		for(ItemStack is : iss) {
+	public static boolean hasEmptySlots(final ItemStack[] iss) {
+		for(final ItemStack is : iss) {
 			if(is == null) {
 				return true;
 			}
@@ -91,9 +93,9 @@ public abstract class InventoryManipulator {
 	}
 	
 	// returns amounts of empty slots.
-	public static int getEmptySlots(ItemStack[] iss) {
+	public static int getEmptySlots(final ItemStack[] iss) {
 		int num=0;
-		for(ItemStack is : iss) {
+		for(final ItemStack is : iss) {
 			if(is == null) {
 				num++;
 			}
@@ -103,9 +105,9 @@ public abstract class InventoryManipulator {
 	
 	
 	// returns the total amounts of all similar itemstacks
-	public static int getItemOccupacy(ItemStack[] iss, ItemStack m) {
+	public static int getItemOccupacy(final ItemStack[] iss, final ItemStack m) {
 		int num=0;
-		for(ItemStack is : iss) {
+		for(final ItemStack is : iss) {
 			if(is != null && is.isSimilar(m)) {
 				num += is.getAmount();
 			}
@@ -114,8 +116,8 @@ public abstract class InventoryManipulator {
 	}
 	
 	// returns true if there is space in a container for an itemstack.
-	public static boolean hasRoomForItem(ItemStack[] iss, ItemStack m) {
-		for(ItemStack is : iss) {
+	public static boolean hasRoomForItem(final ItemStack[] iss, final ItemStack m) {
+		for(final ItemStack is : iss) {
 			if(is == null || (is.isSimilar(m) && is.getAmount()<m.getMaxStackSize())) {
 				return true;
 			}
@@ -124,9 +126,9 @@ public abstract class InventoryManipulator {
 	}
 	
 	// returns total room for itemstack in itemstack array based on max stack size.
-	public static int getRoomForItem(ItemStack[] iss, ItemStack m) {
+	public static int getRoomForItem(final ItemStack[] iss, final ItemStack m) {
 		int room=0;
-		for(ItemStack is : iss) {
+		for(final ItemStack is : iss) {
 			if(is == null) {
 				room += m.getMaxStackSize();
 			} else if (is.isSimilar(m) && is.getAmount()<m.getMaxStackSize()) {
@@ -137,14 +139,14 @@ public abstract class InventoryManipulator {
 	}
 	
 	// returns true if array has a similar itemstack.
-	public static boolean hasItem(ItemStack[] iss, ItemStack m) {
+	public static boolean hasItem(final ItemStack[] iss, final ItemStack m) {
 		if(setContainsItem(getItemSets(iss), m)) return true;
 		return false;
 	}
 	
 	// only returns itemstacks that are similar
-	public static ItemStack[] getOnly(ItemStack[] iss, ItemStack m) {
-		ItemStack[] fin = new ItemStack[iss.length];
+	public static ItemStack[] getOnly(final ItemStack[] iss, final ItemStack m) {
+		final ItemStack[] fin = new ItemStack[iss.length];
 		for(int a=0; a<iss.length; a++) {
 			if(iss[a] != null && iss[a].isSimilar(m)) {
 				fin[a] = iss[a];
@@ -154,9 +156,9 @@ public abstract class InventoryManipulator {
 	}
 	
 	// only returns itemstacks that are similar in a consolidated format
-	public static List<ItemStack> getOnlyConsolidated(ItemStack[] iss, ItemStack m) {
-		List<ItemStack> fin = new ArrayList<ItemStack>();
-		for(ItemStack is : iss) {
+	public static List<ItemStack> getOnlyConsolidated(final ItemStack[] iss, final ItemStack m) {
+		final List<ItemStack> fin = new ArrayList<ItemStack>();
+		for(final ItemStack is : iss) {
 			if(is != null && is.isSimilar(m)) {
 				fin.add(is);
 			}
@@ -165,8 +167,8 @@ public abstract class InventoryManipulator {
 	}
 	
 	// removes all similar itemstacks from array.
-	public static ItemStack[] removeAll(ItemStack[] iss, ItemStack m) {
-		ItemStack[] fin = new ItemStack[iss.length];
+	public static ItemStack[] removeAll(final ItemStack[] iss, final ItemStack m) {
+		final ItemStack[] fin = new ItemStack[iss.length];
 		for(int a=0; a<iss.length; a++) {
 			if(iss[a] != null && !iss[a].isSimilar(m)) {
 				fin[a] = iss[a];

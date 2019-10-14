@@ -1,22 +1,22 @@
-package com.majestic.condenserwand.util.exceptions;
+package com.majestic.condenserwand.exceptions;
 
 import org.bukkit.entity.Player;
 
 // thrown when a player doesn't have permission to do something
 public class NoPlayerPermException extends Exception {
 	private static final long serialVersionUID = 92422437509336123L;
-	private String msg;
-	private Player p;
+	private final String msg;
+	private final Player p;
 	
 	public NoPlayerPermException() {
 		this(null, null);
 	}
 	
-	public NoPlayerPermException(String err) {
+	public NoPlayerPermException(final String err) {
 		this(err, null);
 	}
 	
-	public NoPlayerPermException(String err, Player player) {
+	public NoPlayerPermException(final String err, final Player player) {
 		this.msg = err;
 		this.p = player;
 	}

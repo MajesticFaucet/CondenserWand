@@ -2,30 +2,37 @@ package com.majestic.condenserwand;
 
 import java.util.List;
 
-import org.bukkit.ChatColor;
-import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.Material;
 
-public abstract class ConfigMgr {
-	private static String version, itemname, itemdisplayname, denymsg, wrongcontainermsg, condensemsg, nothingcondensable, nofreespace, recvmsg;
-	private static List<String> lore;
-	private static boolean sort, wanddelay, sendwrongcontainermsg, itemmetacheck, cooleffects, shiny;
-	private static long delay;
+import com.majestic.condenserwand.util.PluginConfig;
+
+public final class ConfigMgr {
+	private final CondenserWand instance;
+	private String itemname, itemdisplayname, denymsg, regiondenymsg, wrongcontainermsg, condensemsg, nothingcondensable, nofreespace, recvmsg;
+	private List<String> lore;
+	private boolean sort, wanddelay, sendwrongcontainermsg, itemmetacheck, cooleffects, shiny;
+	private long delay;
+	private Material itemmaterial;
 	
-	public static void reloadConfig() {
-		CondenserWand instance = CondenserWand.getInstance();
+	ConfigMgr(final CondenserWand instance) {
+		this.instance = instance;
+		reload();
+	}
+	
+	public void reload() {
 		instance.saveDefaultConfig();
 		instance.reloadConfig();
-		FileConfiguration c = instance.getConfig();
-		version = c.getString("version");
+		final PluginConfig c = new PluginConfig(instance.getConfig(), '&');
 		itemname = c.getString("item-name");
-		recvmsg = ChatColor.translateAlternateColorCodes('&', c.getString("receieve-msg"));
-		itemdisplayname = ChatColor.translateAlternateColorCodes('&', c.getString("item-meta.display-name"));
-		denymsg = ChatColor.translateAlternateColorCodes('&', c.getString("deny-message"));
-		wrongcontainermsg = ChatColor.translateAlternateColorCodes('&', c.getString("wrong-container-message"));
-		condensemsg = ChatColor.translateAlternateColorCodes('&', c.getString("condense-msg"));
-		nothingcondensable = ChatColor.translateAlternateColorCodes('&', c.getString("nothing-condensable"));
-		nofreespace = ChatColor.translateAlternateColorCodes('&', c.getString("nofreespace"));
-		lore = CondenserWand.translateColorCodesList(c.getStringList("item-meta.lore"));
+		recvmsg = c.getString_C("receieve-msg");
+		itemdisplayname = c.getString_C("item-meta.display-name");
+		denymsg = c.getString_C("deny-message");
+		regiondenymsg = c.getString_C("region-deny-message");
+		wrongcontainermsg = c.getString_C("wrong-container-message");
+		condensemsg = c.getString_C("condense-msg");
+		nothingcondensable = c.getString_C("nothing-condensable");
+		nofreespace = c.getString_C("nofreespace");
+		lore = c.getStringList_C("item-meta.lore");
 		sort = c.getBoolean("sort");
 		wanddelay = c.getBoolean("wand-delay");
 		cooleffects = c.getBoolean("cooleffects");
@@ -33,74 +40,78 @@ public abstract class ConfigMgr {
 		sendwrongcontainermsg = c.getBoolean("send-wrong-container-message");
 		itemmetacheck = c.getBoolean("enable-item-meta-check");
 		delay = c.getLong("delay");
+		itemmaterial = Material.matchMaterial(itemname);
 	}
-
-	public static String getVersion() {
-		return version;
-	}
-
-	public static String getItemName() {
+	
+	public String getItemName() {
 		return itemname;
 	}
-
-	public static String getItemDisplayName() {
+	
+	public String getItemDisplayName() {
 		return itemdisplayname;
 	}
-
-	public static String getDenyMsg() {
+	
+	public String getDenyMsg() {
 		return denymsg;
 	}
-
-	public static String getWrongContainerMsg() {
+	
+	public String getRegionDenyMsg() {
+		return regiondenymsg;
+	}
+	
+	public String getWrongContainerMsg() {
 		return wrongcontainermsg;
 	}
-
-	public static String getNothingCondensable() {
+	
+	public String getNothingCondensable() {
 		return nothingcondensable;
 	}
-
-	public static String getNoFreeSpace() {
+	
+	public String getNoFreeSpace() {
 		return nofreespace;
 	}
 	
-	public static String getCondenseMsg() {
+	public String getCondenseMsg() {
 		return condensemsg;
 	}
-
-	public static String getRecvMsg() {
+	
+	public String getRecvMsg() {
 		return recvmsg;
 	}
-
-	public static List<String> getLore() {
+	
+	public List<String> getLore() {
 		return lore;
 	}
-
-	public static boolean isSort() {
+	
+	public boolean isSort() {
 		return sort;
 	}
-
-	public static boolean isCoolEffects() {
+	
+	public boolean isCoolEffects() {
 		return cooleffects;
 	}
-
-	public static boolean isWandDelay() {
+	
+	public boolean isWandDelay() {
 		return wanddelay;
 	}
-
-	public static boolean isSendWrongContainerMsg() {
+	
+	public boolean isSendWrongContainerMsg() {
 		return sendwrongcontainermsg;
 	}
 	
-	public static boolean isItemMetaCheck() {
+	public boolean isItemMetaCheck() {
 		return itemmetacheck;
 	}
 	
-	public static boolean isShiny() {
+	public boolean isShiny() {
 		return shiny;
 	}
-
-	public static long getWandDelay() {
+	
+	public long getWandDelay() {
 		return delay;
 	}
 	
+	public Material getItemMaterial() {
+		return itemmaterial;
+	}
 }

@@ -15,7 +15,7 @@
   
   <groupId>com.majestic</groupId>
   <artifactId>condenserwand</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
   <packaging>jar</packaging>
 
   <name>CondenserWand</name>

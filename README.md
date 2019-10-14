@@ -4,7 +4,7 @@ A leightweight sort and craft wand designed to run on your Spigot server.
 * WorldGuard integration
 * Special item with configurable display-name and meta.
 * Plugin compares player items to make sure they match displayname and meta defined in configuration file.
-* Ability to use wand on chests, trapped chests, or even enderchests and minecart chests.
+* Ability to use wand on chests, trapped chests, enderchests, droppers, dispensers, and minecart chests.
 * Shiny item (optional enchanted effect).
 * Cool effects when giving a player a wand.
 * Toggable auto-sort feature.

@@ -2,9 +2,6 @@
 # If permissions are enabled, the default permission is 'condenserwand.use'.
 # All times are in miliseconds and chatcolors use '&'.
 
-# DO NOT CHANGE VERSION, RESERVED FOR PLUGIN USE
-version: 1.0.2
-
 
 # -- Wand Config --
 
@@ -41,6 +38,9 @@ cooleffects: true
 
 # Message to send player when permission check fails.
 deny-message: "&4You do not have permission to use condenser wands!"
+
+# Message to send player when they cannot use wand because of region restriction.
+region-deny-message: "&4Wand usage is not allowed here."
 
 # Message to send when player doesn't click on the correct type of container.
 send-wrong-container-message: true
