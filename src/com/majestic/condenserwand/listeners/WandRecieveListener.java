@@ -1,7 +1,6 @@
 package com.majestic.condenserwand.listeners;
 
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -34,7 +33,7 @@ public final class WandRecieveListener implements Listener {
 	}
 	
 	private void giveWand(final Player player) {
-		final ItemStack wand = new ItemStack(Material.getMaterial(instance.getConfigMgr().getItemName()));
+		final ItemStack wand = new ItemStack(instance.getConfigMgr().getItemMaterial());
 		final ItemMeta im = wand.getItemMeta();
 		im.setDisplayName(instance.getConfigMgr().getItemDisplayName());
 		im.setLore(instance.getConfigMgr().getLore());
@@ -59,23 +58,28 @@ public final class WandRecieveListener implements Listener {
 		
 		@Override
 		public void run() {
-			switch(step) {
-			case 0:
-				atLocation(Math.toRadians(-45D));
-				break;
-			case 1:
-				atLocation(Math.toRadians(-135D));
-				break;
-			case 2:
-				atLocation(Math.toRadians(45D));
-				break;
-			case 3:
-				atLocation(Math.toRadians(135D));
-				WandRecieveListener.this.giveWand(player);
+			try {
+				switch(step) {
+				case 0:
+					atLocation(Math.toRadians(-45D));
+					break;
+				case 1:
+					atLocation(Math.toRadians(-135D));
+					break;
+				case 2:
+					atLocation(Math.toRadians(45D));
+					break;
+				case 3:
+					atLocation(Math.toRadians(135D));
+					WandRecieveListener.this.giveWand(player);
+					this.cancel();
+					return;
+				}
+				step++;
+			} catch(final Exception e) {
+				e.printStackTrace();
 				this.cancel();
-				return;
 			}
-			step++;
 		}
 		
 		private void atLocation(double angle) {
