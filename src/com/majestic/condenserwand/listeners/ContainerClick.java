@@ -70,7 +70,7 @@ public final class ContainerClick implements Listener {
 	private void onEvents(final Player player, final Location location, final Inventory inventory) {
 		try {
 			final PlayerData playerdata = instance.getPlayerData(player);
-			if(timeCheck(player, playerdata)) return;
+			if(!timeCheck(player, playerdata)) return;
 			accessCheck(player, location);
 			instance.getServer().getPluginManager().callEvent(new CondenseEvent(player, playerdata, inventory));
 		} catch(final NoPlayerPermException exception) {
