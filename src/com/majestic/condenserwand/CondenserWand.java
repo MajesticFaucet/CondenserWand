@@ -46,7 +46,6 @@ public final class CondenserWand extends JavaPlugin {
 	public void onEnable() {
 		pmap = new HashMap<>();
 		cmgr = new ConfigMgr(this);
-		getLogger().log(Level.INFO, "Loaded CondenserWand by MajesticFacuet.");
 		final PluginManager pl = getServer().getPluginManager();
 		pl.registerEvents(new ContainerClick(this), this);
 		pl.registerEvents(new CondenseListener(this), this);
@@ -64,9 +63,9 @@ public final class CondenserWand extends JavaPlugin {
 		try {
 			cmgr.reload();
 		} catch(final Exception e) {
-			this.getLogger().log(Level.WARNING, "CondenserWand encountered an error while reloading!", e);
+			this.getLogger().log(Level.WARNING, "Encountered error while reloading!", e);
 		}
-		this.getLogger().log(Level.INFO, "CondenserWand reloaded!");
+		this.getLogger().log(Level.INFO, "Plugin reloaded!");
 	}
 	
 	public WorldGuardPlugin getWorldGuardInstance() {
