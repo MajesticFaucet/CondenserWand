@@ -2,6 +2,8 @@ package com.majestic.condenserwand;
 
 import java.util.List;
 
+import org.bukkit.Material;
+
 import com.majestic.condenserwand.util.PluginConfig;
 
 public final class ConfigMgr {
@@ -10,6 +12,7 @@ public final class ConfigMgr {
 	private List<String> lore;
 	private boolean sort, wanddelay, sendwrongcontainermsg, itemmetacheck, cooleffects, shiny;
 	private long delay;
+	private Material itemmaterial;
 	
 	ConfigMgr(final CondenserWand instance) {
 		this.instance = instance;
@@ -37,6 +40,7 @@ public final class ConfigMgr {
 		sendwrongcontainermsg = c.getBoolean("send-wrong-container-message");
 		itemmetacheck = c.getBoolean("enable-item-meta-check");
 		delay = c.getLong("delay");
+		itemmaterial = Material.matchMaterial(itemname);
 	}
 	
 	public String getItemName() {
@@ -105,5 +109,9 @@ public final class ConfigMgr {
 	
 	public long getWandDelay() {
 		return delay;
+	}
+	
+	public Material getItemMaterial() {
+		return itemmaterial;
 	}
 }

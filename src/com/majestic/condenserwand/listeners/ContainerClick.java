@@ -85,7 +85,7 @@ public final class ContainerClick implements Listener {
 	
 	private boolean itemCheck(final Player p) {
 		return p.getItemInHand() != null 
-				&& p.getItemInHand().getType().equals(Material.getMaterial(configmgr.getItemName())) 
+				&& p.getItemInHand().getType().equals(configmgr.getItemMaterial()) 
 				&& (!configmgr.isItemMetaCheck() || metaCheck(p.getItemInHand()));
 	}
 	
