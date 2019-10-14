@@ -35,14 +35,14 @@ public final class CondenseListener implements Listener {
 		
 		int totalcount=0;
 		boolean nospace = false;
-		for(CondensableItem ci : CondenserWand.C_ITEMS) {
-			ItemStack base = ci.getBase();
+		for(final CondensableItem ci : CondenserWand.C_ITEMS) {
+			final ItemStack base = ci.getBase();
 			if(InventoryUtil.hasItem(inventory.getContents(), base)) {
-				int amount = InventoryUtil.getItemOccupacy(inventory.getContents(), base);
+				final int amount = InventoryUtil.getItemOccupacy(inventory.getContents(), base);
 				if(amount/ci.getRatio()>0) {
 					int room = InventoryUtil.getRoomForItem(inventory.getContents(), ci.getBlock());
 					if(room != 0 || amount%ci.getRatio() == 0) {
-						ItemStack nis = new ItemStack(ci.getBlock());
+						final ItemStack nis = new ItemStack(ci.getBlock());
 						inventory.setContents(InventoryUtil.removeAll(inventory.getContents(), base));
 						nis.setAmount(amount/ci.getRatio());
 						inventory.addItem(nis);

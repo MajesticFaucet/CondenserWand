@@ -4,16 +4,16 @@ import org.bukkit.inventory.ItemStack;
 
 // Used to map each blockables' ratios for conversions between regular and blocked forms.
 public class CondensableItem {
-	private ItemStack base;
-	private ItemStack block;
-	private int ratio;
+	private final ItemStack base;
+	private final ItemStack block;
+	private final int ratio;
 	
 	/**
 	 * @param base - base item.
 	 * @param block - blocked form of the item.
 	 * @param ratio - ratio of base to blocked form.
 	 */
-	public CondensableItem(ItemStack base, ItemStack block, int ratio) {
+	public CondensableItem(final ItemStack base, final ItemStack block, final int ratio) {
 		this.base = base;
 		this.block = block;
 		this.ratio = ratio;

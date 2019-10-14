@@ -31,7 +31,7 @@ public final class PlayerData {
 	}
 	
 	// sets player sort preset
-	public void setSort(boolean value) {
+	public void setSort(final boolean value) {
 		this.sort = value;
 	}
 }

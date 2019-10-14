@@ -24,8 +24,8 @@ import com.majestic.condenserwand.exceptions.NoPlayerPermException;
 import com.majestic.condenserwand.util.MiscUtil;
 
 public final class ContainerClick implements Listener {
-	private CondenserWand instance;
-	private ConfigMgr configmgr;
+	private final CondenserWand instance;
+	private final ConfigMgr configmgr;
 	
 	public ContainerClick(final CondenserWand instance) {
 		this.instance = instance;
@@ -102,7 +102,7 @@ public final class ContainerClick implements Listener {
 	 * Secondary checks to be performed in #onEvents.
 	 */
 	
-	private boolean timeCheck(Player player, PlayerData playerdata) {
+	private boolean timeCheck(final Player player, final PlayerData playerdata) {
 		if(configmgr.isWandDelay()) {
 			if(playerdata.getLastTime() > System.currentTimeMillis() - configmgr.getWandDelay()) {
 				return false;
@@ -113,7 +113,7 @@ public final class ContainerClick implements Listener {
 		return true;
 	}
 	
-	private void accessCheck(Player player, Location location) throws NoPlayerPermException {
+	private void accessCheck(final Player player, final Location location) throws NoPlayerPermException {
 		if(!player.hasPermission("condenserwand.use")) throw new NoPlayerPermException(configmgr.getDenyMsg());
 		
 		if(location != null) {

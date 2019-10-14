@@ -39,15 +39,15 @@ public final class WandRecieveListener implements Listener {
 						player.playSound(location.add(-5D, 0D, 0D), Sound.ANVIL_LAND, 1F, 1F);
 						Thread.sleep(500L);
 						player.playSound(location.add(0D, 0D, -5D), Sound.ANVIL_LAND, 1F, 1F);
-					} catch(InterruptedException e) {
+					} catch(final InterruptedException e) {
 						e.printStackTrace();
 					}
 				}
 			}.runTaskLaterAsynchronously(instance, 40L);
 		}
 		player.sendMessage(instance.getConfigMgr().getRecvMsg());
-		ItemStack wand = new ItemStack(Material.getMaterial(instance.getConfigMgr().getItemName()));
-		ItemMeta im = wand.getItemMeta();
+		final ItemStack wand = new ItemStack(Material.getMaterial(instance.getConfigMgr().getItemName()));
+		final ItemMeta im = wand.getItemMeta();
 		im.setDisplayName(instance.getConfigMgr().getItemDisplayName());
 		im.setLore(instance.getConfigMgr().getLore());
 		if(instance.getConfigMgr().isShiny()) {

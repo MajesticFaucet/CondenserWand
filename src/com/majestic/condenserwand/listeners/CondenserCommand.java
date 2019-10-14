@@ -63,7 +63,7 @@ public class CondenserCommand implements CommandExecutor {
 				sender.sendMessage(ChatColor.DARK_RED + "Sorting is disabled by the server administrator.");
 				break;
 			}
-			PlayerData playerdata = instance.getPlayerData(player);
+			final PlayerData playerdata = instance.getPlayerData(player);
 			if(args.length == 2) {
 				switch(args[1]) {
 				case "on":
