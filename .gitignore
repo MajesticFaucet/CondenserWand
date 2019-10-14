@@ -1,16 +1,9 @@
-target/
-pom.xml.personal
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
-.settings/
-.project
-.classpath
+# Ignore entire top directory
+/*
 
-# Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
-!/.mvn/wrapper/maven-wrapper.jar
+# EXCEPT...
+!/.gitignore
+!/src/
+!/LICENSE
+!/README.md
+!/pom.xml
