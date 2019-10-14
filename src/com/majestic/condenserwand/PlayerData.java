@@ -21,7 +21,7 @@ public final class PlayerData {
 	}
 	
 	public void setLastTime(final long time) {
-		if(time<lasttime) throw new IllegalArgumentException("Last time must be after previous last time.");
+		if(time<lasttime) throw new IllegalArgumentException("Time must be after previous time.");
 		this.lasttime = time;
 	}
 	
