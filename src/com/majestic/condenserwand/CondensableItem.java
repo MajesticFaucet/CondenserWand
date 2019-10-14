@@ -39,5 +39,4 @@ public class CondensableItem {
 	public int getRatio() {
 		return ratio;
 	}
-	
 }

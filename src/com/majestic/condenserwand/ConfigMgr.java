@@ -112,5 +112,4 @@ public final class ConfigMgr {
 	public long getWandDelay() {
 		return delay;
 	}
-	
 }

@@ -30,6 +30,7 @@ public final class CondenseListener implements Listener {
 		final Player player = e.getPlayer();
 		final PlayerData playerdata = e.getPlayerData();
 		final Inventory inventory = e.getInventory();
+		
 		// closes anyone's inventory who is viewing the container
 		inventory.getViewers().forEach(HumanEntity::closeInventory);
 		
