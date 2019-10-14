@@ -4,6 +4,8 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.Chest;
+import org.bukkit.block.Dispenser;
+import org.bukkit.block.Dropper;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -13,6 +15,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -42,8 +45,8 @@ public final class ContainerClick implements Listener {
 		final BlockState block = e.getClickedBlock().getState();
 		final Player player = e.getPlayer();
 		if(itemCheck(player)) {
-			if(block instanceof Chest) {
-				onEvents(player, block.getLocation(), ((Chest) block).getInventory());
+			if(block instanceof Chest || block instanceof Dispenser || block instanceof Dropper) {
+				onEvents(player, block.getLocation(), ((InventoryHolder) block).getInventory());
 			} else if(block.getType().equals(Material.ENDER_CHEST)) {
 				onEvents(player, null, player.getEnderChest());
 			} else if(configmgr.isSendWrongContainerMsg()) {
