@@ -23,9 +23,11 @@ public class CondenserCommand implements CommandExecutor {
 			ChatColor.AQUA + "/condenserwand reload" + ChatColor.DARK_GRAY + ": " + ChatColor.GOLD + "reloads the plugin.",
 	};
 	private final CondenserWand instance;
+	private boolean metanag;
 	
 	public CondenserCommand(final CondenserWand instance) {
 		this.instance = instance;
+		metanag = false;
 	}
 	
 	@Override
@@ -124,8 +126,9 @@ public class CondenserCommand implements CommandExecutor {
 				break;
 			}
 			
-			if(!instance.getConfigMgr().isItemMetaCheck()) {
+			if(!instance.getConfigMgr().isItemMetaCheck() && !metanag) {
 				sender.sendMessage(ChatColor.RED + "WARNING: Item meta check is not enabled in the config, players can use normal un-named versions of this item as a wand!");
+				metanag = true;
 			}
 			
 			instance.getServer().getPluginManager().callEvent(new WandReceiveEvent(receiver));
