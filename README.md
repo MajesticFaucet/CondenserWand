@@ -1,4 +1,4 @@
-## Disclaimer
+## DISCLAIMER
 This project is unmaintained, if you would like to continue development, feel free to fork it.
 # CondenserWand
 A leightweight sort and craft wand designed to run on your Spigot server.
