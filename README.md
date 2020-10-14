@@ -1,7 +1,7 @@
-## DISCLAIMER
-This project is unmaintained, if you would like to continue development, feel free to fork it.
 # CondenserWand
 A leightweight sort and craft wand designed to run on your Spigot server.
+## -DISCLAIMER-
+This project is unmaintained, if you would like to continue development, feel free to fork it.
 ## Features
 * WorldGuard integration
 * Special item with configurable display-name and meta.
