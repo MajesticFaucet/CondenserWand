@@ -44,7 +44,5 @@ Finally, have Maven build and package the jar file.
 ```
 mvn clean install
 ```
-## Contirbuting
-All feedback is appreciated. Please report bugs to the [issues](https://github.com/MajesticFaucet/CondenserWand/issues) page and I will try to get to them as quickly as I can.
 ## Licensing
 This is project is free software. Feel free to modify or distribute this software as long as it is in accordance with the GNU GPLv3.0 License.
