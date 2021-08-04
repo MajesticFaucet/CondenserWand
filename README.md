@@ -22,8 +22,6 @@ This project is unmaintained, if you would like to continue development, feel fr
 * `/condenserwand reload` - reloads the plugin.
 * `/condenserwand version` - displays plugin version.
 * `/condenserwand info` - displays plugin information.
-## Required Dependencies
-* None at all :)
 ## Downloading
 You can either download or build from source.
 
